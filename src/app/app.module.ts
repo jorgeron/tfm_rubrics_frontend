@@ -7,10 +7,15 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Material
 import { MaterialModule } from '../assets/material';
-
-import { HeaderComponent } from './components/master/header/header.component';
+// Dependencies
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+//Components
+import { HeaderComponent } from './components/master/header/header.component';
+import { LoginComponent } from './components/security/login/login.component';
+import { RegisterComponent } from './components/security/register/register.component';
 
 export const firebaseConfig = {
   // Your web app's Firebase configuration
@@ -26,13 +31,18 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [AngularFireAuth],
   bootstrap: [AppComponent]
