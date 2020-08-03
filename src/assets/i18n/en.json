@@ -1,0 +1,25 @@
+{
+    "general": {
+        "view_details": "View details",
+        "no_content": "No content available",
+        "save": "Save",
+        "cancel": "Cancel",
+        "add": "Add",
+        "delete": "Delete"
+    },
+    "header": {
+        "register": "Register",
+        "login": "Login",
+        "logout": "Logout",
+        "search": "Search",
+        "profile": "PROFILE"
+    },
+    "register": {
+        "email": "Email",
+        "password": "Password",
+        "name": "Name",
+        "surname": "Surname",
+        "register": "Sign up",
+        "alreadyRegistered": "Already registered?"
+    }
+}

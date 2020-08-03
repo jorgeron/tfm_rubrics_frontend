@@ -1,29 +1,29 @@
 <mat-toolbar>
-  <span>Registration</span>
+  <span>{{ 'header.register' | translate }}</span>
 </mat-toolbar>
 <mat-card class="my-card">
   <mat-card-content>
     <form [formGroup]="registrationForm" (ngSubmit)="onRegister()" class="my-form">
       <mat-form-field class="full-width">
-             <mat-label>First Name</mat-label>
+             <mat-label>{{ 'register.name' | translate }}</mat-label>
              <input  matInput  placeholder="First name"  name="name" formControlName="name"  required>
           </mat-form-field>
           <mat-form-field class="full-width">
-             <mat-label>Last Name</mat-label>
+             <mat-label>{{ 'register.surname' | translate }}</mat-label>
              <input  matInput  placeholder="Last Name" name="surname" formControlName="surname" required>
           </mat-form-field>
           <mat-form-field class="full-width">
-             <mat-label>Email</mat-label>
+             <mat-label>{{ 'register.email' | translate }}</mat-label>
              <input  matInput type="email" placeholder="Email" name="email" formControlName="email" required>
           </mat-form-field>
           <mat-form-field class="full-width">
-             <mat-label>Password</mat-label>
+             <mat-label>{{ 'register.password' | translate }}</mat-label>
              <input  matInput type="password" placeholder="Password"  name="password" formControlName="password" required>
           </mat-form-field>
           <mat-card-actions>
-            <button mat-raised-button type="submit" color="primary">REGISTER</button>
+            <button mat-raised-button type="submit" color="primary">{{ 'register.register' | translate }}</button>
           </mat-card-actions>
-   </form>   
+   </form>
   </mat-card-content>
   
 </mat-card>

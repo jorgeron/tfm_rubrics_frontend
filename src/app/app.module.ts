@@ -11,11 +11,14 @@ import { MaterialModule } from '../assets/material';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 //Components
 import { HeaderComponent } from './components/master/header/header.component';
 import { LoginComponent } from './components/security/login/login.component';
 import { RegisterComponent } from './components/security/register/register.component';
+import { TranslatableComponent } from './components/shared/translatable/translatable.component';
 
 export const firebaseConfig = {
   // Your web app's Firebase configuration
@@ -28,12 +31,17 @@ export const firebaseConfig = {
   appId: "1:1099489219625:web:d9e97364e530aafef63838"
 };
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    TranslatableComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +51,13 @@ export const firebaseConfig = {
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
   ],
   providers: [AngularFireAuth],
   bootstrap: [AppComponent]

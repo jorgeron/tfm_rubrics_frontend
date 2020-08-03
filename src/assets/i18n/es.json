@@ -1,0 +1,25 @@
+{
+    "general": {
+        "view_details": "Ver detalles",
+        "no_content": "No hay contenido disponible",
+        "save": "Guardar",
+        "cancel": "Cancelar",
+        "add": "Añadir",
+        "delete": "Eliminar"
+    },
+    "header": {
+        "register": "Registrar",
+        "login": "Acceder",
+        "logout": "Salir",
+        "search": "Buscar",
+        "profile": "PERFIL"
+    },
+    "register": {
+        "email": "Correo electrónico",
+        "password": "Contraseña",
+        "name": "Nombre",
+        "surname": "Apellido",
+        "register": "Registrar",
+        "alreadyRegistered": "¿Ya estás registrado?"
+    }
+}
