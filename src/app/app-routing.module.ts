@@ -3,13 +3,18 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/security/login/login.component';
 import { RegisterComponent } from './components/security/register/register.component';
+import { ActorRoleGuard } from './guards/actor-role.guard';
+import { DeniedAccessPageComponent } from './components/shared/denied-access-page/denied-access-page.component';
 
 const appRoutes: Routes = [
 
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent,
+    canActivate: [ActorRoleGuard], data: {expectedRole: 'anonymous'} },
+  { path: 'register', component: RegisterComponent,
+    canActivate: [ActorRoleGuard], data: {expectedRole: 'anonymous'} },
+  { path: 'denied-access', component: DeniedAccessPageComponent }
 
-]
+];
 
 @NgModule({
   imports: [

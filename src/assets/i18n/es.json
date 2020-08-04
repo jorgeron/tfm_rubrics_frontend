@@ -24,5 +24,10 @@
     },
     "login": {
         "dont_have_account": "¿No tienes una cuenta?"
+    },
+    "denied-access-page": {
+        "title": "Denied access",
+        "message-start": "You don't have permission to access",
+        "message-end": "on this server."
     }
 }

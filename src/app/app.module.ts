@@ -24,6 +24,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { NavigationBarComponent } from './components/master/navigation-bar/navigation-bar.component';
 import { SidenavComponent } from './components/master/sidenav/sidenav.component';
+import { DeniedAccessPageComponent } from './components/shared/denied-access-page/denied-access-page.component';
 
 export const firebaseConfig = {
   // Your web app's Firebase configuration
@@ -47,7 +48,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     RegisterComponent,
     TranslatableComponent,
     NavigationBarComponent,
-    SidenavComponent
+    SidenavComponent,
+    DeniedAccessPageComponent
   ],
   imports: [
     BrowserModule,
