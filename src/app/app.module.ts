@@ -19,6 +19,7 @@ import { HeaderComponent } from './components/master/header/header.component';
 import { LoginComponent } from './components/security/login/login.component';
 import { RegisterComponent } from './components/security/register/register.component';
 import { TranslatableComponent } from './components/shared/translatable/translatable.component';
+import { AppRoutingModule } from './app-routing.module';
 
 export const firebaseConfig = {
   // Your web app's Firebase configuration
@@ -58,6 +59,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    AppRoutingModule,
   ],
   providers: [AngularFireAuth],
   bootstrap: [AppComponent]
