@@ -1,0 +1,30 @@
+<mat-sidenav-container class="sidenav-container">
+
+  <mat-sidenav #navigationSidenav mode="over">
+
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <h2 class="toolbar-title"> TFM DIGCOMP-RUBRICS </h2>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <!-- <mat-nav-list dense> -->
+    <mat-nav-list>
+
+      <h2 matSubheader> {{ 'SALES_SUB_HEADER' | translate }} </h2>
+      <h2 matSubheader> {{ 'COLLATERAL_SUB_HEADER' | translate }} </h2>
+      <h2 matSubheader> {{ 'MARKETING_SUB_HEADER' | translate }} </h2>
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content role="main">
+
+    <app-navigation-bar (toggleSidenav)="navigationSidenav.toggle()">
+    </app-navigation-bar>
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

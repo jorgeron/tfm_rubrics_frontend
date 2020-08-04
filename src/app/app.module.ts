@@ -15,11 +15,14 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 //Components
-import { HeaderComponent } from './components/master/header/header.component';
 import { LoginComponent } from './components/security/login/login.component';
 import { RegisterComponent } from './components/security/register/register.component';
 import { TranslatableComponent } from './components/shared/translatable/translatable.component';
 import { AppRoutingModule } from './app-routing.module';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { NavigationBarComponent } from './components/master/navigation-bar/navigation-bar.component';
+import { SidenavComponent } from './components/master/sidenav/sidenav.component';
 
 export const firebaseConfig = {
   // Your web app's Firebase configuration
@@ -39,10 +42,11 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     LoginComponent,
     RegisterComponent,
-    TranslatableComponent
+    TranslatableComponent,
+    NavigationBarComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +64,12 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     AppRoutingModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
   ],
   providers: [AngularFireAuth],
   bootstrap: [AppComponent]

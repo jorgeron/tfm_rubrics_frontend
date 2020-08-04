@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'app-navigation-bar',
+  templateUrl: './navigation-bar.component.html',
+  styleUrls: ['./navigation-bar.component.css']
 })
-export class HeaderComponent extends TranslatableComponent implements OnInit {
+export class NavigationBarComponent extends TranslatableComponent implements OnInit {
+
+  @Output() toggleSidenav = new EventEmitter<void>();
 
   constructor(private translateService: TranslateService,
     private authService: AuthService,
@@ -28,4 +30,5 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
     const lang = localStorage.getItem('language');
     return (lang === language);
   }
+
 }
