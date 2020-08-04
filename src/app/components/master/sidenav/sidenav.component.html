@@ -1,6 +1,6 @@
 <mat-sidenav-container class="sidenav-container">
 
-  <mat-sidenav #navigationSidenav mode="over">
+  <mat-sidenav #navigationSidenav mode="side" opened>
 
     <mat-toolbar>
       <mat-toolbar-row>
@@ -11,9 +11,10 @@
     <!-- <mat-nav-list dense> -->
     <mat-nav-list>
 
-      <h2 matSubheader> {{ 'SALES_SUB_HEADER' | translate }} </h2>
-      <h2 matSubheader> {{ 'COLLATERAL_SUB_HEADER' | translate }} </h2>
-      <h2 matSubheader> {{ 'MARKETING_SUB_HEADER' | translate }} </h2>
+      <ng-container *ngIf="currentActor">
+        <h2 matSubheader> {{ 'header.profile' | translate }} </h2>
+        <a mat-list-item (click)="logout()" style="height: 0;">{{ 'header.logout' | translate }}</a>
+      </ng-container>
 
     </mat-nav-list>
 

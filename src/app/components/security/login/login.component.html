@@ -17,4 +17,9 @@
        </mat-card-actions>
       </form>
    </mat-card-content>
+   <mat-divider></mat-divider>
+   <mat-card-footer>
+      <p>{{ 'login.dont_have_account' | translate }}</p>
+      <a mat-raised-button color="primary" routerLink="/register">{{ 'header.register' | translate }}</a>
+   </mat-card-footer>
 </mat-card>

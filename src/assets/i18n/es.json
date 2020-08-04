@@ -21,5 +21,8 @@
         "surname": "Apellido",
         "register": "Registrar",
         "alreadyRegistered": "¿Ya estás registrado?"
+    },
+    "login": {
+        "dont_have_account": "¿No tienes una cuenta?"
     }
 }

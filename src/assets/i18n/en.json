@@ -21,5 +21,8 @@
         "surname": "Surname",
         "register": "Sign up",
         "alreadyRegistered": "Already registered?"
+    },
+    "login": {
+        "dont_have_account": "Don't have an account?"
     }
 }

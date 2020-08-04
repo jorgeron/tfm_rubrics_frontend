@@ -90,4 +90,15 @@ export class AuthService {
         });
     });
   }
+
+  getCurrentActor() {
+    let result = null;
+    // Aquí sería conveniente comprobar si existe idToken y si es válido
+    if (localStorage.getItem('currentActor')) {
+      result = JSON.parse(localStorage.getItem('currentActor'));
+      console.log('getcurrentactor: ' + localStorage.getItem('currentActor'));
+      return result;
+    }
+    return result;
+  }
 }
