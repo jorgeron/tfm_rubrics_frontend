@@ -24,7 +24,7 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
   ngOnInit() {
     super.ngOnInit();
     console.log('currentActor loginComponent: ', this.authService.currentActor);
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/teacher/rubrics/list';
   }
   onLogin(form: NgForm) {
     const email = form.value.email;
