@@ -11,6 +11,11 @@
     <!-- <mat-nav-list dense> -->
     <mat-nav-list>
 
+      <ng-container *ngIf="activeRole === 'TEACHER'">
+        <h2 matSubheader> {{ 'header.rubrics' | translate }} </h2>
+        <a mat-list-item routerLink="/teacher/rubrics/list" style="height: 0;">{{ 'teacher.my_rubrics' | translate }}</a>
+      </ng-container>
+
       <ng-container *ngIf="currentActor">
         <h2 matSubheader> {{ 'header.profile' | translate }} </h2>
         <a mat-list-item (click)="logout()" style="height: 0;">{{ 'header.logout' | translate }}</a>

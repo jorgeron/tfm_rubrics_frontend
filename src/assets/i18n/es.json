@@ -12,7 +12,8 @@
         "login": "Acceder",
         "logout": "Salir",
         "search": "Buscar",
-        "profile": "PERFIL"
+        "profile": "PERFIL",
+        "rubrics": "RÚBRICAS"
     },
     "register": {
         "email": "Correo electrónico",
@@ -29,5 +30,8 @@
         "title": "Denied access",
         "message-start": "You don't have permission to access",
         "message-end": "on this server."
+    },
+    "teacher": {
+        "my_rubrics": "Mis rúbricas"
     }
 }

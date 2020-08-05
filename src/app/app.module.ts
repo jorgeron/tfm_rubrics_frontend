@@ -25,6 +25,7 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
 import { NavigationBarComponent } from './components/master/navigation-bar/navigation-bar.component';
 import { SidenavComponent } from './components/master/sidenav/sidenav.component';
 import { DeniedAccessPageComponent } from './components/shared/denied-access-page/denied-access-page.component';
+import { RubricListComponent } from './components/rubric/rubric-list/rubric-list.component';
 
 export const firebaseConfig = {
   // Your web app's Firebase configuration
@@ -49,7 +50,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     TranslatableComponent,
     NavigationBarComponent,
     SidenavComponent,
-    DeniedAccessPageComponent
+    DeniedAccessPageComponent,
+    RubricListComponent
   ],
   imports: [
     BrowserModule,
