@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Actor } from '../models/actor.model';
+import { Actor } from '../../models/actor.model';
 import { environment } from 'src/environments/environment';
 import { Subject } from 'rxjs';
 
@@ -89,6 +89,26 @@ export class AuthService {
           reject(error);
         });
     });
+  }
+
+  loadIDtoken() {
+    return new Promise<any>((resolve, reject) => {
+      this.fireAuth.auth.currentUser.getIdToken(/* forceRefresh */ true)
+        .then(function (idToken) {
+          console.log('setIDtoken: ', idToken);
+          localStorage.setItem('idToken', idToken);
+          resolve(idToken);
+        }).catch(error => {
+          console.log('Error retriving ID Token: ', error);
+          reject(error);
+        });
+    });
+  }
+
+  getIDtoken() {
+    const result = localStorage.getItem('idToken');
+    console.log('result getIDtoken: ', result);
+    return result ? result : null;
   }
 
   getCurrentActor() {

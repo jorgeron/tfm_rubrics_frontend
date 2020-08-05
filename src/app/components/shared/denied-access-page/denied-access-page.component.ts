@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslatableComponent } from '../translatable/translatable.component';
 import { TranslateService } from '@ngx-translate/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
