@@ -1,3 +1,29 @@
-<p>
-  rubric-create works!
-</p>
+<mat-toolbar-row>
+  <h2>{{ 'teacher.create_rubric' | translate }}</h2>
+</mat-toolbar-row>
+
+<div class="example-container">
+  <div class="form-container">
+
+    <form class="rubric-form" [formGroup]="rubricForm" (submit)="onSubmit()">
+      <mat-form-field class="form-field">
+        <mat-label> {{ 'rubric.name' | translate }}
+        </mat-label>
+        <input matInput formControlName="name" required>
+        <mat-error *ngIf="rubricForm.controls.name.touched && rubricForm.controls.name.invalid">
+          <span *ngIf="rubricForm.controls.name.errors.required">{{ 'errors.required' | translate }}</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <mat-label> {{ 'rubric.description' | translate }}
+        </mat-label>
+        <textarea matInput formControlName="description"></textarea>
+        <mat-error *ngIf="rubricForm.controls.description.touched && rubricForm.controls.description.invalid">
+          <span *ngIf="rubricForm.controls.description.errors.required">{{ 'errors.required' | translate }}</span>
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">{{ 'general.save' | translate }}</button>
+    </form>
+
+  </div>
+</div>

@@ -27,14 +27,24 @@ export class RubricService {
     return this.http.get(url, {headers});
   }
 
-  /*getRubricsByTeacher(): Promise<Rubric[]> {
+  createRubric(rubric) {
     const idToken = this.authService.getIDtoken();
-    const idTeacher = this.authService.getCurrentActor()._id;
-    const url = `${environment.backendApiBaseURL}/actors/` + idTeacher + '/rubrics';
+    const url = `${environment.backendApiBaseURL}/rubrics/`;
 
     let headers = this.apiService.createHttpHeaders();
-    headers = headers.append('idToken', idToken);
+    headers = headers.append('idtoken', idToken);
 
-    return this.http.get<Rubric[]>(url, {headers}).toPromise();
-  }*/
+    const body = JSON.stringify(rubric);
+
+    return new Promise<any>((resolve, reject) => {
+      this.http.post(url, body, {headers}).toPromise()
+        .then(res => {
+          resolve(res);
+        }, err => {
+          console.log(err);
+          reject(err);
+        });
+    });
+  }
+
 }

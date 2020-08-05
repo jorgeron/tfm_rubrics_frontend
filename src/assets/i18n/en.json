@@ -7,6 +7,9 @@
         "add": "Add",
         "delete": "Delete"
     },
+    "errors": {
+        "required": "This field is mandatory"
+    },
     "header": {
         "register": "Register",
         "login": "Login",
@@ -34,5 +37,9 @@
     "teacher": {
         "my_rubrics": "My rubrics",
         "create_rubric": "Create rubric"
+    },
+    "rubric": {
+        "name": "Name",
+        "description": "Description"
     }
 }

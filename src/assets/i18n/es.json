@@ -7,6 +7,9 @@
         "add": "Añadir",
         "delete": "Eliminar"
     },
+    "errors": {
+        "required": "Este campo es obligatorio"
+    },
     "header": {
         "register": "Registrar",
         "login": "Acceder",
@@ -34,5 +37,9 @@
     "teacher": {
         "my_rubrics": "Mis rúbricas",
         "create_rubric": "Crear rúbrica"
+    },
+    "rubric": {
+        "name": "Nombre",
+        "description": "Descripción"
     }
 }
