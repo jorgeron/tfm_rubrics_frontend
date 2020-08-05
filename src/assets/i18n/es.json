@@ -32,6 +32,7 @@
         "message-end": "on this server."
     },
     "teacher": {
-        "my_rubrics": "Mis rúbricas"
+        "my_rubrics": "Mis rúbricas",
+        "create_rubric": "Crear rúbrica"
     }
 }

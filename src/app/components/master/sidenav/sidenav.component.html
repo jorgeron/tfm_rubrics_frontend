@@ -9,18 +9,23 @@
     </mat-toolbar>
 
     <!-- <mat-nav-list dense> -->
-    <mat-nav-list>
+    <mat-nav-list *ngIf="activeRole === 'TEACHER'">
 
-      <ng-container *ngIf="activeRole === 'TEACHER'">
-        <h2 matSubheader> {{ 'header.rubrics' | translate }} </h2>
-        <a mat-list-item routerLink="/teacher/rubrics/list" style="height: 0;">{{ 'teacher.my_rubrics' | translate }}</a>
-      </ng-container>
+      <h2 matSubheader> {{ 'header.rubrics' | translate }} </h2>
+      <mat-list-item>
+        <a routerLink="/teacher/rubrics/list">{{ 'teacher.my_rubrics' | translate }}</a>
+      </mat-list-item>
+      <mat-list-item>
+        <a routerLink="/teacher/rubrics/create">{{ 'teacher.create_rubric' | translate }}</a>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+      <h2 matSubheader> {{ 'header.profile' | translate }} </h2>
+      <mat-list-item>
+        <a (click)="logout()">{{ 'header.logout' | translate }}</a>
+      </mat-list-item>
       
-      <ng-container *ngIf="currentActor">
-        <h2 matSubheader> {{ 'header.profile' | translate }} </h2>
-        <a mat-list-item (click)="logout()" style="height: 0;">{{ 'header.logout' | translate }}</a>
-      </ng-container>
-
     </mat-nav-list>
 
   </mat-sidenav>
