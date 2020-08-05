@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ApiService } from '../api.service';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Rubric } from 'src/app/models/rubric.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,4 +26,15 @@ export class RubricService {
 
     return this.http.get(url, {headers});
   }
+
+  /*getRubricsByTeacher(): Promise<Rubric[]> {
+    const idToken = this.authService.getIDtoken();
+    const idTeacher = this.authService.getCurrentActor()._id;
+    const url = `${environment.backendApiBaseURL}/actors/` + idTeacher + '/rubrics';
+
+    let headers = this.apiService.createHttpHeaders();
+    headers = headers.append('idToken', idToken);
+
+    return this.http.get<Rubric[]>(url, {headers}).toPromise();
+  }*/
 }
