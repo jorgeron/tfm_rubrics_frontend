@@ -5,25 +5,47 @@
 <div class="example-container">
   <div class="form-container">
 
-    <form class="rubric-form" [formGroup]="rubricForm" (submit)="onSubmit()">
-      <mat-form-field class="form-field">
-        <mat-label> {{ 'rubric.name' | translate }}
-        </mat-label>
-        <input matInput formControlName="name" required>
-        <mat-error *ngIf="rubricForm.controls.name.touched && rubricForm.controls.name.invalid">
-          <span *ngIf="rubricForm.controls.name.errors.required">{{ 'errors.required' | translate }}</span>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="form-field">
-        <mat-label> {{ 'rubric.description' | translate }}
-        </mat-label>
-        <textarea matInput formControlName="description"></textarea>
-        <mat-error *ngIf="rubricForm.controls.description.touched && rubricForm.controls.description.invalid">
-          <span *ngIf="rubricForm.controls.description.errors.required">{{ 'errors.required' | translate }}</span>
-        </mat-error>
-      </mat-form-field>
-      <button mat-raised-button color="primary" type="submit">{{ 'general.save' | translate }}</button>
-    </form>
+    <mat-card>
+
+      <form class="rubric-form" [formGroup]="rubricForm" (submit)="onSubmit()">
+        <mat-form-field class="form-field">
+          <mat-label> {{ 'rubric.name' | translate }}
+          </mat-label>
+          <input matInput formControlName="name" required>
+          <mat-error *ngIf="rubricForm.controls.name.touched && rubricForm.controls.name.invalid">
+            <span *ngIf="rubricForm.controls.name.errors.required">{{ 'errors.required' | translate }}</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field">
+          <mat-label> {{ 'rubric.description' | translate }}
+          </mat-label>
+          <textarea matInput formControlName="description"></textarea>
+          <mat-error *ngIf="rubricForm.controls.description.touched && rubricForm.controls.description.invalid">
+            <span *ngIf="rubricForm.controls.description.errors.required">{{ 'errors.required' | translate }}</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-accordion class="example-headers-align">
+          <mat-expansion-panel *ngFor="let area of getAreas()">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{area.name}}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-selection-list>
+              <mat-list-option *ngFor="let competence of getAreaCompetences(area)">
+                {{competence.name}}
+              </mat-list-option>
+            </mat-selection-list>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <button mat-raised-button color="primary" type="submit">{{ 'general.save' | translate }}</button>
+      </form>
+
+    </mat-card>
 
   </div>
 </div>
