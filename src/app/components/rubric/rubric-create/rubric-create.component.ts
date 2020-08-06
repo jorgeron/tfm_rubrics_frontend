@@ -3,7 +3,7 @@ import { TranslatableComponent } from '../../shared/translatable/translatable.co
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Actor } from 'src/app/models/actor.model';
 import { RubricService } from 'src/app/services/rubric/rubric.service';
 import { AreaService } from 'src/app/services/area/area.service';
@@ -20,6 +20,7 @@ export class RubricCreateComponent extends TranslatableComponent implements OnIn
 
   competences_by_areas_map: Map<Area, Competence[]> = new Map<Area, Competence[]>();
   rubricForm: FormGroup;
+  selected_competences: Competence[] = [];
   public currentActor: Actor;
 
   constructor(translateService: TranslateService,
@@ -45,7 +46,9 @@ export class RubricCreateComponent extends TranslatableComponent implements OnIn
       name: ['', Validators.required],
       description: ['', Validators.required],
       teacher: [this.currentActor._id],
-      competences: ['', Validators.required]
+      //competences: [[], Validators.required]
+      //competences: new FormControl([])
+      //competences: this.fb.array([])
     });
 
     this.areaService.getAllAreas().then((areas) => {
@@ -69,11 +72,31 @@ export class RubricCreateComponent extends TranslatableComponent implements OnIn
     });
   }
 
+  addCompetence(competence) {
+    this.selected_competences.push(competence);
+  }
+
+  removeCompetence(competence) {
+    const index = this.selected_competences.indexOf(competence);
+    this.selected_competences.splice(index, 1);
+  }
+
   getAreas() {
     return this.competences_by_areas_map.keys();
   }
 
   getAreaCompetences(area) {
     return this.competences_by_areas_map.get(area);
+  }
+
+  onSelection(e, v) {
+    console.log(e.option._selected);
+    if (e.option._selected) {
+      this.selected_competences.push(e.option.value);
+    } else {
+      const comp = this.selected_competences.find(c => c._id === e.option.value._id);
+      const index = this.selected_competences.indexOf(comp);
+      this.selected_competences.splice(index, 1);
+    }
   }
 }
