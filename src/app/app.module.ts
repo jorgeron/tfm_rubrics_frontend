@@ -27,6 +27,7 @@ import { SidenavComponent } from './components/master/sidenav/sidenav.component'
 import { DeniedAccessPageComponent } from './components/shared/denied-access-page/denied-access-page.component';
 import { RubricListComponent } from './components/rubric/rubric-list/rubric-list.component';
 import { RubricCreateComponent } from './components/rubric/rubric-create/rubric-create.component';
+import { AssessmentCreateComponent } from './components/assessment/assessment-create/assessment-create.component';
 
 export const firebaseConfig = {
   // Your web app's Firebase configuration
@@ -53,7 +54,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SidenavComponent,
     DeniedAccessPageComponent,
     RubricListComponent,
-    RubricCreateComponent
+    RubricCreateComponent,
+    AssessmentCreateComponent
   ],
   imports: [
     BrowserModule,

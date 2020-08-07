@@ -27,6 +27,20 @@ export class RubricService {
     return this.http.get(url, {headers});
   }
 
+  /*getRubricById(idRubric): Observable<any> {
+    const url = `${environment.backendApiBaseURL}/rubrics/` + idRubric;
+    const headers = this.apiService.createHttpHeaders();
+
+    return this.http.get<Rubric>(url, {headers});
+  }*/
+
+  getRubricById(idRubric) {
+    const url = `${environment.backendApiBaseURL}/rubrics/` + idRubric;
+    const headers = this.apiService.createHttpHeaders();
+
+    return this.http.get<Rubric>(url, {headers}).toPromise();
+  }
+
   createRubric(rubric) {
     const idToken = this.authService.getIDtoken();
     const url = `${environment.backendApiBaseURL}/rubrics/`;

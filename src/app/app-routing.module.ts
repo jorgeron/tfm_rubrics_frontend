@@ -7,6 +7,7 @@ import { ActorRoleGuard } from './guards/actor-role.guard';
 import { DeniedAccessPageComponent } from './components/shared/denied-access-page/denied-access-page.component';
 import { RubricListComponent } from './components/rubric/rubric-list/rubric-list.component';
 import { RubricCreateComponent } from './components/rubric/rubric-create/rubric-create.component';
+import { AssessmentCreateComponent } from './components/assessment/assessment-create/assessment-create.component';
 
 const appRoutes: Routes = [
 
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
       {
         path: 'rubrics',
         children: [
+          { path: ':idRubric/assessment', component: AssessmentCreateComponent },
           { path: 'list', component: RubricListComponent },
           { path: 'create', component: RubricCreateComponent }
         ]

@@ -40,7 +40,8 @@
     },
     "rubric": {
         "name": "Name",
-        "description": "Description"
+        "description": "Description",
+        "assessment": "Rubric assessment"
     },
     "competence": {
         "select": "Select competences"
