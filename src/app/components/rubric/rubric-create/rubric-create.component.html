@@ -19,32 +19,35 @@
         <mat-form-field class="form-field">
           <mat-label> {{ 'rubric.description' | translate }}
           </mat-label>
-          <textarea matInput formControlName="description"></textarea>
+          <textarea matInput formControlName="description" required></textarea>
           <mat-error *ngIf="rubricForm.controls.description.touched && rubricForm.controls.description.invalid">
             <span *ngIf="rubricForm.controls.description.errors.required">{{ 'errors.required' | translate }}</span>
           </mat-error>
         </mat-form-field>
 
-        <mat-accordion class="example-headers-align">
-          <mat-expansion-panel *ngFor="let area of getAreas(); let i = index">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                {{area.name}}
-              </mat-panel-title>
-            </mat-expansion-panel-header>
+        <label>{{ 'competence.select' | translate }}</label>
+        <div class="competences-div">
+          <mat-accordion class="example-headers-align">
+            <mat-expansion-panel *ngFor="let area of getAreas(); let i = index;">
+              <mat-expansion-panel-header [style.background-color]="area.colorCode">
+                <mat-panel-title>
+                  {{area.name}}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
 
-            <mat-selection-list #i (selectionChange)="onSelection($event, i.selectedOptions)">
-              <mat-list-option *ngFor="let competence of getAreaCompetences(area)"
-                id="{{competence._id}}"
-                [value]="competence">
-                {{competence.name}}
-              </mat-list-option>
-            </mat-selection-list>
+              <mat-selection-list #i (selectionChange)="onSelection($event, i.selectedOptions)">
+                <mat-list-option *ngFor="let competence of getAreaCompetences(area)" id="{{competence._id}}"
+                  [value]="competence">
+                  {{competence.name}}
+                </mat-list-option>
+              </mat-selection-list>
 
-          </mat-expansion-panel>
-        </mat-accordion>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
 
-        <button mat-raised-button color="primary" type="submit">{{ 'general.save' | translate }}</button>
+        <button mat-raised-button color="primary" type="submit"
+          [disabled]="rubricForm.invalid || selected_competences.length == 0">{{ 'general.save' | translate }}</button>
       </form>
 
     </mat-card>

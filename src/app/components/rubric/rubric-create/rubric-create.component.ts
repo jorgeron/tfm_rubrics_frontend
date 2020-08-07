@@ -86,6 +86,10 @@ export class RubricCreateComponent extends TranslatableComponent implements OnIn
     return this.competences_by_areas_map.keys();
   }
 
+  getColor(area) {
+    return area.colorCode;
+  }
+
   getAreaCompetences(area) {
     return this.competences_by_areas_map.get(area);
   }

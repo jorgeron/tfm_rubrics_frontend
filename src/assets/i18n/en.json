@@ -41,5 +41,8 @@
     "rubric": {
         "name": "Name",
         "description": "Description"
+    },
+    "competence": {
+        "select": "Select competences"
     }
 }
