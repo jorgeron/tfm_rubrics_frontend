@@ -63,6 +63,7 @@ export class RubricCreateComponent extends TranslatableComponent implements OnIn
 
   onSubmit() {
     const formModel = this.rubricForm.value;
+    formModel.competences = this.selected_competences;
 
     this.rubricService.createRubric(formModel).then((val) => {
       console.log('Rubric creada: ', val);

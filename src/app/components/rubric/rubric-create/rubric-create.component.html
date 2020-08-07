@@ -25,9 +25,6 @@
           </mat-error>
         </mat-form-field>
 
-        <div>
-          {{ selected_competences.length | json }}
-        </div>
         <mat-accordion class="example-headers-align">
           <mat-expansion-panel *ngFor="let area of getAreas(); let i = index">
             <mat-expansion-panel-header>
@@ -52,6 +49,5 @@
 
     </mat-card>
 
-    <pre>{{rubricForm?.value | json}}</pre>
   </div>
 </div>
