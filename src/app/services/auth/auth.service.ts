@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Actor } from '../../models/actor.model';
 import { environment } from 'src/environments/environment';
 import { Subject } from 'rxjs';
+import { ApiService } from '../api.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -18,7 +19,8 @@ export class AuthService {
   public userLoggedIn = new Subject();
 
   constructor(private fireAuth: AngularFireAuth,
-    private http: HttpClient) { }
+    private http: HttpClient,
+    private apiService: ApiService) { }
 
 
   public registerUser(actor: Actor) {
@@ -73,6 +75,27 @@ export class AuthService {
     });
   }
 
+
+  loginWithGoogle(code: string) {
+    return new Promise<any>((resolve, reject) => {
+      const url = environment.backendApiBaseURL + '/google-login?code=' + code;
+      this.http.get<Actor>(url).toPromise()
+        .then((actor: Actor) => {
+          this.currentActor = actor;
+          localStorage.setItem('currentActorEmail', actor.email);
+          localStorage.setItem('currentActor', JSON.stringify(actor));
+          localStorage.setItem('idToken', actor.idToken);
+          console.log('login to localstore: ' + JSON.stringify(actor));
+          this.userLoggedIn.next(true);
+          //this.messageService.notifyMessage('messages.auth.login.correct', 'alert alert-success');
+          resolve(this.currentActor);
+        }).catch(error => {
+          //this.messageService.notifyMessage('errorMessages.auth.login.incorrect', 'alert alert-danger');
+          reject(error);
+        });
+    });
+  }
+
   logout() {
     return new Promise<any>((resolve, reject) => {
       this.fireAuth.auth.signOut()
@@ -120,5 +143,12 @@ export class AuthService {
       return result;
     }
     return result;
+  }
+
+  getGoogleOauthUrl() {
+    const url = `${environment.backendApiBaseURL}/google-login`;
+    const headers = this.apiService.createHttpHeaders();
+
+    return this.http.get<any>(url, { headers }).toPromise();
   }
 }

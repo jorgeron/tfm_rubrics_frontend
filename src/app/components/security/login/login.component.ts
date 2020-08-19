@@ -13,6 +13,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class LoginComponent extends TranslatableComponent implements OnInit {
 
   private returnUrl: string;
+  private OAUTH_URL: string;
 
   constructor(private authService: AuthService,
     private translateService: TranslateService,
@@ -24,8 +25,20 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
   ngOnInit() {
     super.ngOnInit();
     console.log('currentActor loginComponent: ', this.authService.currentActor);
+    this.authService.getGoogleOauthUrl().then(result => {
+      this.OAUTH_URL = result.url;
+    });
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/teacher/rubrics/list';
+
+    this.route.queryParams.subscribe(queryParams => {
+      const code = queryParams['code'];
+      if (code) {
+        console.log('code: ', code);
+        this.onLoginWithGoogle(code);
+      }
+    });
   }
+
   onLogin(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
@@ -37,6 +50,14 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
       }).catch((error) => {
         console.log(error);
       });
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
+  onLoginWithGoogle(code: string) {
+    this.authService.loginWithGoogle(code).then(_ => {
+      this.router.navigateByUrl(this.returnUrl);
     }).catch((error) => {
       console.log(error);
     });

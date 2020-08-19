@@ -8,6 +8,7 @@ export class Actor extends Entity {
     password: string;
     role: string;
     customToken: string;
+    idToken: string;
 
     constructor() {
         super();
