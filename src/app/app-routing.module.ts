@@ -8,6 +8,7 @@ import { DeniedAccessPageComponent } from './components/shared/denied-access-pag
 import { RubricListComponent } from './components/rubric/rubric-list/rubric-list.component';
 import { RubricCreateComponent } from './components/rubric/rubric-create/rubric-create.component';
 import { AssessmentCreateComponent } from './components/assessment/assessment-create/assessment-create.component';
+import { CourseListComponent } from './components/course/course-list/course-list.component';
 
 const appRoutes: Routes = [
 
@@ -28,6 +29,12 @@ const appRoutes: Routes = [
           { path: ':idRubric/assessment', component: AssessmentCreateComponent },
           { path: 'list', component: RubricListComponent },
           { path: 'create', component: RubricCreateComponent }
+        ]
+      },
+      {
+        path: 'courses',
+        children: [
+          { path: 'list', component: CourseListComponent }
         ]
       }
     ]

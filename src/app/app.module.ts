@@ -28,6 +28,7 @@ import { DeniedAccessPageComponent } from './components/shared/denied-access-pag
 import { RubricListComponent } from './components/rubric/rubric-list/rubric-list.component';
 import { RubricCreateComponent } from './components/rubric/rubric-create/rubric-create.component';
 import { AssessmentCreateComponent } from './components/assessment/assessment-create/assessment-create.component';
+import { CourseListComponent } from './components/course/course-list/course-list.component';
 
 export const firebaseConfig = {
   // Your web app's Firebase configuration
@@ -55,7 +56,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     DeniedAccessPageComponent,
     RubricListComponent,
     RubricCreateComponent,
-    AssessmentCreateComponent
+    AssessmentCreateComponent,
+    CourseListComponent
   ],
   imports: [
     BrowserModule,

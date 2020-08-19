@@ -16,7 +16,8 @@
         "logout": "Logout",
         "search": "Search",
         "profile": "PROFILE",
-        "rubrics": "RUBRICS"
+        "rubrics": "RUBRICS",
+        "courses": "COURSES"
     },
     "register": {
         "email": "Email",
@@ -36,7 +37,8 @@
     },
     "teacher": {
         "my_rubrics": "My rubrics",
-        "create_rubric": "Create rubric"
+        "create_rubric": "Create rubric",
+        "my_courses": "My courses"
     },
     "rubric": {
         "name": "Name",

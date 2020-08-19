@@ -85,6 +85,7 @@ export class AuthService {
           localStorage.setItem('currentActorEmail', actor.email);
           localStorage.setItem('currentActor', JSON.stringify(actor));
           localStorage.setItem('idToken', actor.idToken);
+          localStorage.setItem('tokens', JSON.stringify(actor.tokens));
           console.log('login to localstore: ' + JSON.stringify(actor));
           this.userLoggedIn.next(true);
           //this.messageService.notifyMessage('messages.auth.login.correct', 'alert alert-success');
@@ -104,6 +105,7 @@ export class AuthService {
           localStorage.removeItem('currentActorEmail');
           localStorage.removeItem('idToken');
           localStorage.removeItem('currentActor');
+          localStorage.removeItem('tokens');
           this.userLoggedIn.next(false);
           //this.messageService.notifyMessage('messages.auth.logout', 'alert alert-success');
           resolve();
@@ -131,6 +133,16 @@ export class AuthService {
   getIDtoken() {
     const result = localStorage.getItem('idToken');
     console.log('result getIDtoken: ', result);
+    return result ? result : null;
+  }
+
+  getTokens() {
+    const result = localStorage.getItem('tokens');
+    return result ? result : null;
+  }
+
+  getAccessToken() {
+    const result = localStorage.getItem('access_token');
     return result ? result : null;
   }
 
