@@ -38,7 +38,8 @@
     "teacher": {
         "my_rubrics": "My rubrics",
         "create_rubric": "Create rubric",
-        "my_courses": "My courses"
+        "my_courses": "My courses",
+        "students": "Students"
     },
     "rubric": {
         "name": "Name",

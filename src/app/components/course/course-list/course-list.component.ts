@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CourseService } from 'src/app/services/course/course.service';
 import { TranslateService } from '@ngx-translate/core';
+import { Course } from 'src/app/models/course.model';
 
 @Component({
   selector: 'app-course-list',
@@ -11,6 +12,8 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./course-list.component.css']
 })
 export class CourseListComponent extends TranslatableComponent implements OnInit {
+
+  courses: Course[];
 
   constructor(translateService: TranslateService,
     private authService: AuthService,
@@ -22,7 +25,7 @@ export class CourseListComponent extends TranslatableComponent implements OnInit
 
   ngOnInit() {
     this.courseService.getCoursesByTeacher().then(courses => {
-      console.log('courses: ', courses);
+      this.courses = courses;
     });
   }
 

@@ -9,6 +9,7 @@ import { RubricListComponent } from './components/rubric/rubric-list/rubric-list
 import { RubricCreateComponent } from './components/rubric/rubric-create/rubric-create.component';
 import { AssessmentCreateComponent } from './components/assessment/assessment-create/assessment-create.component';
 import { CourseListComponent } from './components/course/course-list/course-list.component';
+import { StudentListByCourseComponent } from './components/student/student-list-by-course/student-list-by-course.component';
 
 const appRoutes: Routes = [
 
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
       {
         path: 'courses',
         children: [
+          { path: ':idCourse/students', component: StudentListByCourseComponent },
           { path: 'list', component: CourseListComponent }
         ]
       }
