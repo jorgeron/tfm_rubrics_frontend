@@ -2,25 +2,50 @@
   <h2>{{ 'rubric.assessment' | translate }}</h2>
 </mat-toolbar-row>
 
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource">
+<div class="container mat-elevation-z8 assessment-container" fxLayout="column">
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> NAME </th>
-      <td mat-cell *matCellDef="let row"> {{row.name}} </td>
-    </ng-container>
+  <div class="select-container" fxLayout="row">
+    <mat-form-field fxFlex="30" appearance="fill">
+      <mat-label>{{'assessment.select_course' | translate}}</mat-label>
+      <mat-select (selectionChange)="onCourseChange($event)" [(value)]="selected_course">
+        <mat-option *ngFor="let course of courses" [value]="course._id">
+          {{course.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-    <!-- Name Column -->
-    <ng-container *ngFor="let level of levelsArray" matColumnDef="{{level}}">
-      <th mat-header-cell *matHeaderCellDef> {{level}} </th>
-      <td mat-cell *matCellDef="let row"> {{row.proficiencyLevels[level-1].descriptor}} </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-    </tr>
-  </table>
-
+    <mat-form-field fxFlex="30" appearance="fill">
+      <mat-label>{{'assessment.select_student' | translate}}</mat-label>
+      <mat-select (selectionChange)="onStudentChange($event)" [(value)]="selected_student">
+        <mat-option *ngFor="let student of students" [value]="student._id">
+          {{student.name}} {{student.surname}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p>{{selected_student}}</p>
+  </div>
+  
+  <div>
+    <table mat-table [dataSource]="dataSource">
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> NAME </th>
+        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container *ngFor="let level of levelsArray" matColumnDef="{{level}}">
+        <th mat-header-cell *matHeaderCellDef> {{level}} </th>
+        <td mat-cell *matCellDef="let row"> {{row.proficiencyLevels[level-1].descriptor}} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+      </tr>
+    </table>
+  
+  </div>
 </div>
+
 <pre>{{ levelsArray }}</pre>

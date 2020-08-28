@@ -20,7 +20,7 @@ export class StudentListByCourseComponent extends TranslatableComponent implemen
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private translateService: TranslateService,
-    private studentServie: StudentService,
+    private studentService: StudentService,
     private route: ActivatedRoute) {
     super(translateService);
   }
@@ -45,7 +45,7 @@ export class StudentListByCourseComponent extends TranslatableComponent implemen
 
 
   getStudents(idCourse) {
-    this.studentServie.getStudentsByCourse(idCourse).subscribe((students: Student[]) => {
+    this.studentService.getStudentsByCourse(idCourse).subscribe((students: Student[]) => {
       this.dataSource.data = students;
       return students;
     });

@@ -49,5 +49,10 @@
     },
     "competence": {
         "select": "Selecciona competencias"
+    },
+    "assessment": {
+        "select_course": "Selecciona curso",
+        "select_activity": "Seleciona actividad",
+        "select_student": "Selecciona alumno"
     }
 }
