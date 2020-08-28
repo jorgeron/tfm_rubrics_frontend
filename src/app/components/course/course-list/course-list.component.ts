@@ -24,6 +24,8 @@ export class CourseListComponent extends TranslatableComponent implements OnInit
      }
 
   ngOnInit() {
+    super.ngOnInit();
+
     this.courseService.getCoursesByTeacher().then(courses => {
       this.courses = courses;
     });

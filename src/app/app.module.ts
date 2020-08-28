@@ -15,13 +15,13 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpModule } from '@angular/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
 //Components
 import { LoginComponent } from './components/security/login/login.component';
 import { RegisterComponent } from './components/security/register/register.component';
 import { TranslatableComponent } from './components/shared/translatable/translatable.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { NavigationBarComponent } from './components/master/navigation-bar/navigation-bar.component';
 import { SidenavComponent } from './components/master/sidenav/sidenav.component';
 import { DeniedAccessPageComponent } from './components/shared/denied-access-page/denied-access-page.component';
@@ -78,7 +78,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     AppRoutingModule,
     LayoutModule,
-    HttpModule
+    HttpModule,
+    FlexLayoutModule
   ],
   providers: [AngularFireAuth],
   bootstrap: [AppComponent]
