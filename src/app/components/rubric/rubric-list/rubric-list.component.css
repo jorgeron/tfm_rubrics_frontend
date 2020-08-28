@@ -10,4 +10,8 @@ table {
   td, th {
     width: 25%;
   }
-  
+
+  .rubrics-table-container {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }

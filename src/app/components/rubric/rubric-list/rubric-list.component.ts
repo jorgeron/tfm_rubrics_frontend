@@ -12,7 +12,7 @@ import { RubricService } from 'src/app/services/rubric/rubric.service';
 })
 export class RubricListComponent extends TranslatableComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'description'];
+  displayedColumns: string[] = ['name', 'description', 'assess'];
   dataSource: MatTableDataSource<Rubric>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

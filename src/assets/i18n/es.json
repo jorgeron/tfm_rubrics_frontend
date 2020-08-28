@@ -44,7 +44,8 @@
     "rubric": {
         "name": "Nombre",
         "description": "Descripción",
-        "assessment": "Evaluación de la rúbrica"
+        "assessment": "Evaluación de la rúbrica",
+        "assess": "Evaluar"
     },
     "competence": {
         "select": "Selecciona competencias"
