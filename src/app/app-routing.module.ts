@@ -14,6 +14,9 @@ import { StudentListByCourseComponent } from './components/student/student-list-
 const appRoutes: Routes = [
 
   {
+    path: '', component: LoginComponent
+  },
+  {
     path: 'login', component: LoginComponent,
     canActivate: [ActorRoleGuard], data: { expectedRole: 'anonymous' }
   },

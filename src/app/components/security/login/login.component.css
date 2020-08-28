@@ -7,3 +7,8 @@
   .full-width {
     width: 100%;
   }
+
+  .login-card {
+    text-align: center;
+    border-radius: 1rem;
+  }

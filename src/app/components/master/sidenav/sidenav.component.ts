@@ -3,7 +3,8 @@ import { TranslatableComponent } from '../../shared/translatable/translatable.co
 import { Actor } from 'src/app/models/actor.model';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-sidenav',
@@ -16,7 +17,8 @@ export class SidenavComponent extends TranslatableComponent implements OnInit {
 
   constructor(private translateService: TranslateService,
     private authService: AuthService,
-    private router: Router) {
+    private router: Router,
+    private route: ActivatedRoute) {
     super(translateService);
   }
 

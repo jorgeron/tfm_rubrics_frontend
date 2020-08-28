@@ -1,6 +1,7 @@
 <mat-sidenav-container class="sidenav-container">
 
-  <mat-sidenav #navigationSidenav mode="side" opened>
+  <mat-sidenav #navigationSidenav mode="side" closed (click)="navigationSidenav.toggle()">
+  <!--<mat-sidenav #navigationSidenav mode="side" opened>-->
 
     <mat-toolbar>
       <mat-toolbar-row>
