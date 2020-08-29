@@ -1,10 +1,11 @@
 .assessment-container {
+  background-color: white;
   margin-left: 2rem;
   margin-right: 2rem;
 }
 
 .select-container {
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
 }
@@ -15,14 +16,55 @@
 
 table {
     width: 100%;
+    border: black;
+    border-style: solid;
+    border-width: medium;
+    text-align: center;
   }
   
   .mat-form-field {
     font-size: 14px;
     width: 100%;
   }
+
+  .form-field {
+    margin-left: 1rem;
+  }
   
   td, th {
-    width: 25%;
+    width: 10%;
+  }
+
+  th.mat-header-cell {
+    text-align: center;
+    font-size: large;
+    color: black;
+    border-bottom: black;
+    border-bottom-style: solid;
+    border-bottom-width: medium;
+  }
+
+  td.mat-cell:first-of-type,
+  th.mat-header-cell:first-of-type  {
+    padding-left: 0;
+    border-right: black;
+    border-right-style: solid;
+    border-right-width: medium;
+    font-weight: bold;
+  }
+
+  tr.mat-header-row {
+    background-color: darkgray;
+  }
+
+  td.mat-cell {
+    border-bottom-color: black;
+  }
+
+  .mat-cell.hovered {
+    background: #eee;
+  }
+  .mat-cell.selected {
+    background: rgb(120, 120, 120);
   }
   

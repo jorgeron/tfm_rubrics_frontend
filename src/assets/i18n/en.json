@@ -48,11 +48,13 @@
         "assess": "Assess"
     },
     "competence": {
+        "competence": "Competence",
         "select": "Select competences"
     },
     "assessment": {
         "select_course": "Select course",
         "select_activity": "Select activity",
-        "select_student": "Select student"
+        "select_student": "Select student",
+        "comments": "Comments"
     }
 }

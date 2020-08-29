@@ -7,6 +7,7 @@ export class Assessment extends Entity {
     student: string;
     activity: string;
     scores: Score[];
+    comment: string;
 
     constructor() {
         super();

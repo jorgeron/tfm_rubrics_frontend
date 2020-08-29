@@ -13,6 +13,8 @@ import { Student } from 'src/app/models/student.model';
 import { StudentService } from 'src/app/services/student/student.service';
 import { ActivityService } from 'src/app/services/activity/activity.service';
 import { Activity } from 'src/app/models/activity.model';
+import { Assessment } from 'src/app/models/assessment.model';
+import { Score } from 'src/app/models/score.model';
 
 @Component({
   selector: 'app-assessment-create',
@@ -32,6 +34,9 @@ export class AssessmentCreateComponent extends TranslatableComponent implements 
   private selected_activity;
   private selected_student;
   private selected_course;
+  private assessment: Assessment;
+  private scores: Score[];
+  private comment;
 
   displayedColumns: string[] = ['name', '1', '2', '3', '4', '5', '6', '7', '8'];
   dataSource: MatTableDataSource<Competence>;
@@ -51,10 +56,13 @@ export class AssessmentCreateComponent extends TranslatableComponent implements 
   ngOnInit() {
     super.ngOnInit();
 
+    this.assessment = new Assessment();
     this.idRubric = this.route.snapshot.params['idRubric'];
     this.rubricService.getRubricById(this.idRubric).then((result) => {
       this.rubric = result;
+      this.assessment.rubricId = this.rubric._id;
       this.competences = result.competences;
+      console.log('competences: ', this.competences);
       this.dataSource = new MatTableDataSource();
       this.dataSource.data = this.competences;
     });
@@ -67,6 +75,14 @@ export class AssessmentCreateComponent extends TranslatableComponent implements 
   onCourseChange(event) {
     this.getStudents(this.selected_course);
     this.getActivities(this.selected_course);
+  }
+
+  onActivityChange() {
+    this.assessment.activity = this.selected_activity;
+  }
+
+  onStudentChange() {
+    this.assessment.student = this.selected_student;
   }
 
   getStudents(idCourse) {
@@ -83,6 +99,26 @@ export class AssessmentCreateComponent extends TranslatableComponent implements 
       console.log('activities; ', this.activities);
       return activities;
     });
+  }
+
+  onSelectLevel(competence: Competence, levelDescriptor) {
+    console.log('comment: ', this.comment);
+    competence.proficiencyLevels.map((level) =>
+      level._id === levelDescriptor._id ? level.selected = true : level.selected = false);
+  }
+
+  onSubmit() {
+    this.competences.forEach((competence) => {
+      const score = new Score();
+      score.competenceId = competence._id;
+      score.competenceName = competence.name;
+      score.proficiencyLevel = competence.proficiencyLevels.find(x => x.selected);
+      this.scores.push(score);
+    });
+    if (this.comment) {
+      this.assessment.comment = this.comment;
+    }
+    this.assessment.scores = this.scores;
   }
   /*getRubric() {
     this.rubricService.getRubricById(this.idRubric).subscribe((rubric: Rubric) => {
