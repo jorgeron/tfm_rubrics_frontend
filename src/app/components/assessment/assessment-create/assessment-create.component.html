@@ -15,6 +15,16 @@
     </mat-form-field>
 
     <mat-form-field fxFlex="30" appearance="fill">
+      <mat-label>{{'assessment.select_activity' | translate}}</mat-label>
+      <mat-select (selectionChange)="onActivityChange($event)" [(value)]="selected_activity">
+        <mat-option *ngFor="let activity of activities" [value]="activity._id">
+          {{activity.title}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p>{{selected_activity}}</p>
+
+    <mat-form-field fxFlex="30" appearance="fill">
       <mat-label>{{'assessment.select_student' | translate}}</mat-label>
       <mat-select (selectionChange)="onStudentChange($event)" [(value)]="selected_student">
         <mat-option *ngFor="let student of students" [value]="student._id">
@@ -22,7 +32,6 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <p>{{selected_student}}</p>
   </div>
   
   <div>

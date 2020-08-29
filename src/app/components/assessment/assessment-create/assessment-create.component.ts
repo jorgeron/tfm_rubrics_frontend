@@ -11,6 +11,8 @@ import { Course } from 'src/app/models/course.model';
 import { CourseService } from 'src/app/services/course/course.service';
 import { Student } from 'src/app/models/student.model';
 import { StudentService } from 'src/app/services/student/student.service';
+import { ActivityService } from 'src/app/services/activity/activity.service';
+import { Activity } from 'src/app/models/activity.model';
 
 @Component({
   selector: 'app-assessment-create',
@@ -26,6 +28,9 @@ export class AssessmentCreateComponent extends TranslatableComponent implements 
   private levelsArray = [];
   private courses: Course[];
   private students: Student[];
+  private activities: Activity[];
+  private selected_activity;
+  private selected_student;
   private selected_course;
 
   displayedColumns: string[] = ['name', '1', '2', '3', '4', '5', '6', '7', '8'];
@@ -35,6 +40,7 @@ export class AssessmentCreateComponent extends TranslatableComponent implements 
     private rubricService: RubricService,
     private courseService: CourseService,
     private studentService: StudentService,
+    private activityService: ActivityService,
     private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder) {
@@ -60,6 +66,7 @@ export class AssessmentCreateComponent extends TranslatableComponent implements 
 
   onCourseChange(event) {
     this.getStudents(this.selected_course);
+    this.getActivities(this.selected_course);
   }
 
   getStudents(idCourse) {
@@ -67,6 +74,14 @@ export class AssessmentCreateComponent extends TranslatableComponent implements 
       this.students = students;
       console.log('students; ', this.students);
       return students;
+    });
+  }
+
+  getActivities(idCourse) {
+    this.activityService.getActivitiesByCourse(idCourse).subscribe((activities: Activity[]) => {
+      this.activities = activities;
+      console.log('activities; ', this.activities);
+      return activities;
     });
   }
   /*getRubric() {
