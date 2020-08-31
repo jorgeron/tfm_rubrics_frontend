@@ -3,7 +3,7 @@ import { Score } from './score.model';
 
 export class Assessment extends Entity {
 
-    rubricId: string;
+    rubric: string;
     student: string;
     activity: string;
     scores: Score[];

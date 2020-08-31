@@ -15,6 +15,7 @@ import { ActivityService } from 'src/app/services/activity/activity.service';
 import { Activity } from 'src/app/models/activity.model';
 import { Assessment } from 'src/app/models/assessment.model';
 import { Score } from 'src/app/models/score.model';
+import { AssessmentService } from 'src/app/services/assessment/assessment.service';
 
 @Component({
   selector: 'app-assessment-create',
@@ -35,7 +36,7 @@ export class AssessmentCreateComponent extends TranslatableComponent implements 
   private selected_student;
   private selected_course;
   private assessment: Assessment;
-  private scores: Score[];
+  private scores: Score[] = [];
   private comment;
 
   displayedColumns: string[] = ['name', '1', '2', '3', '4', '5', '6', '7', '8'];
@@ -46,6 +47,7 @@ export class AssessmentCreateComponent extends TranslatableComponent implements 
     private courseService: CourseService,
     private studentService: StudentService,
     private activityService: ActivityService,
+    private assessmentService: AssessmentService,
     private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder) {
@@ -60,9 +62,8 @@ export class AssessmentCreateComponent extends TranslatableComponent implements 
     this.idRubric = this.route.snapshot.params['idRubric'];
     this.rubricService.getRubricById(this.idRubric).then((result) => {
       this.rubric = result;
-      this.assessment.rubricId = this.rubric._id;
+      this.assessment.rubric = this.rubric._id;
       this.competences = result.competences;
-      console.log('competences: ', this.competences);
       this.dataSource = new MatTableDataSource();
       this.dataSource.data = this.competences;
     });
@@ -82,7 +83,8 @@ export class AssessmentCreateComponent extends TranslatableComponent implements 
   }
 
   onStudentChange() {
-    this.assessment.student = this.selected_student;
+    this.assessment.student = JSON.parse(this.selected_student);
+    console.log('selected_student ', this.assessment.student);
   }
 
   getStudents(idCourse) {
@@ -108,18 +110,30 @@ export class AssessmentCreateComponent extends TranslatableComponent implements 
   }
 
   onSubmit() {
-    this.competences.forEach((competence) => {
-      const score = new Score();
-      score.competenceId = competence._id;
-      score.competenceName = competence.name;
-      score.proficiencyLevel = competence.proficiencyLevels.find(x => x.selected);
-      this.scores.push(score);
+    this.buildAssessment().then(_ => {
+      this.assessmentService.createAssessment(this.assessment).then(result => {
+        console.log(result);
+      });
     });
-    if (this.comment) {
-      this.assessment.comment = this.comment;
-    }
-    this.assessment.scores = this.scores;
   }
+
+  buildAssessment() {
+    return new Promise<any>((resolve, reject) => {
+      this.competences.forEach((competence) => {
+        const score = new Score();
+        score.competence = competence._id;
+        score.competenceName = competence.name;
+        score.proficiencyLevel = competence.proficiencyLevels.find(x => x.selected);
+        this.scores.push(score);
+      });
+      if (this.comment) {
+        this.assessment.comment = this.comment;
+      }
+      this.assessment.scores = this.scores;
+      resolve();
+    });
+  }
+
   /*getRubric() {
     this.rubricService.getRubricById(this.idRubric).subscribe((rubric: Rubric) => {
       console.log('rubric: ', rubric);

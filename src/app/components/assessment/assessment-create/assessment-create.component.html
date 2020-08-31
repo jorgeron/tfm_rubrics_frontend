@@ -23,7 +23,6 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <p>{{selected_activity}}</p>
 
     <mat-form-field fxFlex="30" appearance="fill">
       <mat-label>{{'assessment.select_student' | translate}}</mat-label>
@@ -68,6 +67,9 @@
       </mat-label>
       <textarea matInput rows="5" [(ngModel)]="comment"></textarea>
     </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="onSubmit()"
+          [disabled]="false">{{ 'general.save' | translate }}</button>
   </div>
   
 </div>
