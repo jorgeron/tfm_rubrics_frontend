@@ -62,14 +62,15 @@
   </div>
 
   <div class="select-container" fxLayout="row">
-    <mat-form-field fxFlex="80" class="form-field">
+    <mat-form-field fxFlex="75" class="form-field">
       <mat-label> {{ 'assessment.comments' | translate }}
       </mat-label>
       <textarea matInput rows="5" [(ngModel)]="comment"></textarea>
     </mat-form-field>
 
-    <button mat-raised-button color="primary" (click)="onSubmit()"
+    <button mat-raised-button fxFlex="25" color="primary" (click)="onSubmit()"
           [disabled]="false">{{ 'general.save' | translate }}</button>
+
   </div>
   
 </div>

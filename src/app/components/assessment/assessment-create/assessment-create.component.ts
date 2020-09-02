@@ -106,13 +106,12 @@ export class AssessmentCreateComponent extends TranslatableComponent implements 
     console.log('comment: ', this.comment);
     competence.proficiencyLevels.map((level) =>
       level.selected = level._id === levelDescriptor._id);
-      // level.selected = true : level.selected = false);
   }
 
   onSubmit() {
     this.buildAssessment().then(_ => {
       this.assessmentService.createAssessment(this.assessment).then(result => {
-        console.log(result);
+        this.router.navigate(['/teacher/rubrics/list']);
       });
     });
   }
