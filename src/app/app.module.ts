@@ -59,7 +59,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     RubricCreateComponent,
     AssessmentCreateComponent,
     CourseListComponent,
-    StudentListByCourseComponent
+    StudentListByCourseComponent,
   ],
   imports: [
     BrowserModule,

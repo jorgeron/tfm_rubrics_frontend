@@ -56,5 +56,13 @@
         "select_activity": "Select activity",
         "select_student": "Select student",
         "comments": "Comments"
+    },
+    "student": {
+        "name": "Name",
+        "surname": "Surname",
+        "email": "Email"
+    },
+    "course": {
+        "view_students": "View students"
     }
 }

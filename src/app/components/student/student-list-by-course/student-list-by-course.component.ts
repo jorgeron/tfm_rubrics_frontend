@@ -5,6 +5,7 @@ import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute } from '@angular/router';
 import { Student } from 'src/app/models/student.model';
+import { CompetenceService } from 'src/app/services/competence/competence.service';
 
 @Component({
   selector: 'app-student-list-by-course',
@@ -13,14 +14,15 @@ import { Student } from 'src/app/models/student.model';
 })
 export class StudentListByCourseComponent extends TranslatableComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'surname', 'email'];
+  displayedColumns: string[] = ['name', 'surname'];
   dataSource: MatTableDataSource<Student>;
+  private competences = [];
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private translateService: TranslateService,
     private studentService: StudentService,
+    private competenceService: CompetenceService,
     private route: ActivatedRoute) {
     super(translateService);
   }
@@ -29,17 +31,18 @@ export class StudentListByCourseComponent extends TranslatableComponent implemen
     super.ngOnInit();
     this.dataSource = new MatTableDataSource();
 
-    //const idCourse = this.route.params['idCourse'];
-    //this.getStudents(idCourse);
-    this.route.params.subscribe(params => {
-      const idCourse = params['idCourse'];
-
-      //if (idCourse) {
+    this.competenceService.getAllCompetences().then(competences => {
+      this.competences = competences;
+      for (const c of competences) {
+        this.displayedColumns.push(c._id);
+      }
+      console.log("columns: ", this.displayedColumns);
+      this.route.params.subscribe(params => {
+        const idCourse = params['idCourse'];
         this.getStudents(idCourse);
-      //}
+      });
     });
 
-    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
@@ -49,6 +52,16 @@ export class StudentListByCourseComponent extends TranslatableComponent implemen
       this.dataSource.data = students;
       return students;
     });
+  }
+
+  getStudentLevelInCompetence(student, competenceId) {
+    let result = null;
+    student.overallLevels.forEach(element => {
+      if (element.competenceId === competenceId) {
+        result = element.level;
+      }
+    });
+    return result;
   }
 
   applyFilter(filterValue: string) {

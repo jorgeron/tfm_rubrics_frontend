@@ -18,4 +18,11 @@ export class CompetenceService {
 
       return this.http.get<Competence[]>(url, {headers}).toPromise();
     }
+
+    getAllCompetences() {
+      const url = `${environment.backendApiBaseURL}/competences`;
+      const headers = this.apiService.createHttpHeaders();
+
+      return this.http.get<Competence[]>(url, {headers}).toPromise();
+    }
 }

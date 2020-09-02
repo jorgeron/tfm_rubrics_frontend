@@ -56,5 +56,13 @@
         "select_activity": "Seleciona actividad",
         "select_student": "Selecciona alumno",
         "comments": "Comentarios"
+    },
+    "student": {
+        "name": "Nombre",
+        "surname": "Apellidos",
+        "email": "Email"
+    },
+    "course": {
+        "view_students": "Ver alumnos"
     }
 }

@@ -15,8 +15,7 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
+      <a mat-raised-button color="primary" [routerLink]="['/teacher/courses', course._id, 'students']" >{{"course.view_students" | translate}}</a>
     </mat-card-actions>
   </mat-card>
 </div>

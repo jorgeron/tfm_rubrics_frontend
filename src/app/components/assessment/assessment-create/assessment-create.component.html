@@ -38,7 +38,7 @@
     <table mat-table [dataSource]="dataSource">
   
       <!-- Title Column -->
-      <ng-container matColumnDef="name">
+      <ng-container matColumnDef="name" sticky>
         <th mat-header-cell class="competence-header" *matHeaderCellDef> {{'competence.competence' | translate}} </th>
         <td mat-cell class="competence-cell" *matCellDef="let row" [style.background-color]="row.area.colorCode"> {{row.name}} </td>
       </ng-container>
