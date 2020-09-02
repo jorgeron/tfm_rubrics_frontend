@@ -83,8 +83,7 @@ export class AssessmentCreateComponent extends TranslatableComponent implements 
   }
 
   onStudentChange() {
-    this.assessment.student = JSON.parse(this.selected_student);
-    console.log('selected_student ', this.assessment.student);
+    this.assessment.student = this.selected_student;
   }
 
   getStudents(idCourse) {
@@ -106,7 +105,8 @@ export class AssessmentCreateComponent extends TranslatableComponent implements 
   onSelectLevel(competence: Competence, levelDescriptor) {
     console.log('comment: ', this.comment);
     competence.proficiencyLevels.map((level) =>
-      level._id === levelDescriptor._id ? level.selected = true : level.selected = false);
+      level.selected = level._id === levelDescriptor._id);
+      // level.selected = true : level.selected = false);
   }
 
   onSubmit() {
@@ -118,6 +118,7 @@ export class AssessmentCreateComponent extends TranslatableComponent implements 
   }
 
   buildAssessment() {
+    this.scores = [];
     return new Promise<any>((resolve, reject) => {
       this.competences.forEach((competence) => {
         const score = new Score();
@@ -133,13 +134,4 @@ export class AssessmentCreateComponent extends TranslatableComponent implements 
       resolve();
     });
   }
-
-  /*getRubric() {
-    this.rubricService.getRubricById(this.idRubric).subscribe((rubric: Rubric) => {
-      console.log('rubric: ', rubric);
-      this.rubric = rubric;
-      this.dataSource.data = rubric.competences;
-      return rubric;
-    });
-  }*/
 }

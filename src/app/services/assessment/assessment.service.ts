@@ -24,7 +24,7 @@ export class AssessmentService {
     const body = JSON.stringify(assessment);
     console.log('assessment stringify: ', body);
     return new Promise<any>((resolve, reject) => {
-      this.http.post(url, assessment, { headers }).toPromise()
+      this.http.post(url, body, { headers }).toPromise()
         .then(res => {
           resolve(res);
         }, err => {
