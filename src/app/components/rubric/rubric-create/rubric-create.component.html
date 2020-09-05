@@ -3,54 +3,60 @@
 </mat-toolbar-row>
 
 <div class="example-container">
-  <div class="form-container">
 
-    <mat-card>
 
+  <mat-card>
+    <div class="form-container">
       <form class="rubric-form" [formGroup]="rubricForm" (submit)="onSubmit()">
-        <mat-form-field class="form-field">
-          <mat-label> {{ 'rubric.name' | translate }}
-          </mat-label>
-          <input matInput formControlName="name" required>
-          <mat-error *ngIf="rubricForm.controls.name.touched && rubricForm.controls.name.invalid">
-            <span *ngIf="rubricForm.controls.name.errors.required">{{ 'errors.required' | translate }}</span>
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field class="form-field">
-          <mat-label> {{ 'rubric.description' | translate }}
-          </mat-label>
-          <textarea matInput formControlName="description" required></textarea>
-          <mat-error *ngIf="rubricForm.controls.description.touched && rubricForm.controls.description.invalid">
-            <span *ngIf="rubricForm.controls.description.errors.required">{{ 'errors.required' | translate }}</span>
-          </mat-error>
-        </mat-form-field>
+        <div fxLayout="row" fxLayout.lt-md="column">
+          <div class="inputs-container" fxFlex="30">
+            <mat-form-field class="form-field">
+              <mat-label> {{ 'rubric.name' | translate }}
+              </mat-label>
+              <input matInput formControlName="name" required>
+              <mat-error *ngIf="rubricForm.controls.name.touched && rubricForm.controls.name.invalid">
+                <span *ngIf="rubricForm.controls.name.errors.required">{{ 'errors.required' | translate }}</span>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-field">
+              <mat-label> {{ 'rubric.description' | translate }}
+              </mat-label>
+              <textarea matInput formControlName="description" required></textarea>
+              <mat-error *ngIf="rubricForm.controls.description.touched && rubricForm.controls.description.invalid">
+                <span *ngIf="rubricForm.controls.description.errors.required">{{ 'errors.required' | translate }}</span>
+              </mat-error>
+            </mat-form-field>
+          </div>
 
-        <label>{{ 'competence.select' | translate }}</label>
-        <div class="competences-div">
-          <mat-accordion class="example-headers-align">
-            <mat-expansion-panel *ngFor="let area of getAreas(); let i = index;">
-              <mat-expansion-panel-header [style.background-color]="area.colorCode">
-                <mat-panel-title>
-                  {{area.name}}
-                </mat-panel-title>
-              </mat-expansion-panel-header>
 
-              <mat-selection-list #i (selectionChange)="onSelection($event, i.selectedOptions)">
-                <mat-list-option *ngFor="let competence of getAreaCompetences(area)" id="{{competence._id}}"
-                  [value]="competence">
-                  {{competence.name}}
-                </mat-list-option>
-              </mat-selection-list>
 
-            </mat-expansion-panel>
-          </mat-accordion>
+          <div class="competences-div" fxFlex="50">
+            <label>{{ 'competence.select' | translate }}</label>
+            <mat-accordion class="example-headers-align">
+              <mat-expansion-panel *ngFor="let area of getAreas(); let i = index;">
+                <mat-expansion-panel-header [style.background-color]="area.colorCode">
+                  <mat-panel-title>
+                    {{area.name}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-selection-list #i (selectionChange)="onSelection($event, i.selectedOptions)">
+                  <mat-list-option *ngFor="let competence of getAreaCompetences(area)" id="{{competence._id}}"
+                    [value]="competence">
+                    {{competence.name}}
+                  </mat-list-option>
+                </mat-selection-list>
+
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
         </div>
 
         <button mat-raised-button color="primary" type="submit"
           [disabled]="rubricForm.invalid || selected_competences.length == 0">{{ 'general.save' | translate }}</button>
       </form>
+    </div>
+  </mat-card>
 
-    </mat-card>
 
-  </div>
 </div>

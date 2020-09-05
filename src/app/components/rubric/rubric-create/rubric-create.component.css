@@ -6,7 +6,7 @@
 
 .rubric-form {
   min-width: 150px;
-  max-width: 500px;
+  /*max-width: 500px;*/
   width: 100%;
 }
 
@@ -15,8 +15,7 @@
 }
 
 .competences-div {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin: 2rem;
 }
 
 .mat-expansion-panel-header-title {
