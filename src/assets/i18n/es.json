@@ -45,7 +45,9 @@
         "name": "Nombre",
         "description": "Descripción",
         "assessment": "Evaluación de la rúbrica",
-        "assess": "Evaluar"
+        "assess": "Evaluar",
+        "view_assessments": "Ver evaluaciones",
+        "view": "Ver rúbrica"
     },
     "competence": {
         "competence": "Competencia",

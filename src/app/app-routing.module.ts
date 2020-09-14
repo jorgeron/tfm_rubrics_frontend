@@ -10,6 +10,7 @@ import { RubricCreateComponent } from './components/rubric/rubric-create/rubric-
 import { AssessmentCreateComponent } from './components/assessment/assessment-create/assessment-create.component';
 import { CourseListComponent } from './components/course/course-list/course-list.component';
 import { StudentListByCourseComponent } from './components/student/student-list-by-course/student-list-by-course.component';
+import { RubricViewComponent } from './components/rubric/rubric-view/rubric-view.component';
 
 const appRoutes: Routes = [
 
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
         path: 'rubrics',
         children: [
           { path: ':idRubric/assessment', component: AssessmentCreateComponent },
+          { path: ':idRubric/view', component: RubricViewComponent },
           { path: 'list', component: RubricListComponent },
           { path: 'create', component: RubricCreateComponent }
         ]

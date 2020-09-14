@@ -18,7 +18,7 @@
 
       <mat-label>{{'assessment.select_activity' | translate}}</mat-label>
       <mat-select (selectionChange)="onActivityChange($event)" [(value)]="selected_activity">
-        <mat-option *ngFor="let activity of activities" [value]="activity._id">
+        <mat-option *ngFor="let activity of activities" [value]="activity">
           {{activity.title}}
         </mat-option>
       </mat-select>

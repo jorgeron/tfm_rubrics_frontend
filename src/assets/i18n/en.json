@@ -45,7 +45,9 @@
         "name": "Name",
         "description": "Description",
         "assessment": "Rubric assessment",
-        "assess": "Assess"
+        "assess": "Assess",
+        "view_assessments": "View assessments",
+        "view": "View rubric"
     },
     "competence": {
         "competence": "Competence",

@@ -79,6 +79,10 @@ export class AssessmentCreateComponent extends TranslatableComponent implements 
   }
 
   onActivityChange() {
+    /*var activity = new Activity();
+    activity._id = this.selected_activity._id;
+    activity.title = this.selected_activity.title;*/
+    console.log('selected activity: ', this.selected_activity)
     this.assessment.activity = this.selected_activity;
   }
 

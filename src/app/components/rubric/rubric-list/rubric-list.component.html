@@ -27,6 +27,12 @@
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let row"><a mat-raised-button color="primary" [routerLink]="['/teacher/rubrics', row._id, 'assessment']">{{'rubric.assess' | translate}}</a></td>
       </ng-container>
+
+      <!-- Activities Column -->
+      <ng-container matColumnDef="activities">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let row"><a *ngIf="row.activities.length > 0" mat-raised-button color="primary" [routerLink]="['/teacher/rubrics', row._id, 'view']">{{'rubric.view_assessments' | translate}}</a></td>
+      </ng-container>
       
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -1,0 +1,27 @@
+<mat-toolbar-row>
+  <h2>{{ 'rubric.view' | translate }}</h2>
+</mat-toolbar-row>
+
+<div class="content">
+  <mat-card class="rubric-card">
+    <mat-card-header>
+      <mat-card-title><h2>{{rubric.name}}</h2></mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p>
+        {{rubric.description}}
+      </p>
+      <h3>Competencias evaluadas:</h3>
+      <mat-list>
+        <mat-list-item *ngFor="let comp of rubric.competences" [style.background-color]="comp.area.colorCode">{{comp.name}}</mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <h3>Actividades evaluadas:</h3>
+      <mat-list>
+        <mat-list-item *ngFor="let activity of rubric.activities">{{activity.title}}</mat-list-item>
+      </mat-list>
+    </mat-card-actions>
+  </mat-card>
+</div>
